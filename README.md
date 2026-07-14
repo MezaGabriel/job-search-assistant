@@ -1,6 +1,6 @@
 # mcp-jobs — your AI job-search copilot
 
-**Version 0.1.6**
+**Version 0.1.7**
 
 mcp-jobs turns Claude Desktop into a job-search assistant: it finds openings,
 scores how well you fit, tailors your CV and cover letter per job (as PDFs),
