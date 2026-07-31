@@ -1,6 +1,6 @@
 # mcp-jobs — your AI job-search copilot
 
-**Version 0.1.3**
+**Version 0.1.8**
 
 mcp-jobs turns Claude Desktop into a job-search assistant: it finds openings,
 scores how well you fit, tailors your CV and cover letter per job (as PDFs),
@@ -31,10 +31,10 @@ invents experience you don't have.**
 2. **Install Node.js 22 LTS** from nodejs.org, and **Claude Code CLI** if you
    don't have it — open a terminal, run `claude`, and follow the login.
    You need Claude Pro or Max.
-3. **Run the wizard**: double-click `setup.bat` (or run `node mcp-jobs.cjs setup`
-   in a terminal). It walks you through: Apify token → Google (optional) →
-   your profile (drop your LinkedIn data export PDF and your CV PDF into the
-   `CV\` folder when asked).
+3. **Run the wizard**: double-click `setup.bat` (macOS/Linux: `./setup.sh`), or
+   run `node mcp-jobs.cjs setup` in a terminal. It walks you through: Apify
+   token → Google (optional) → your profile (drop your LinkedIn data export PDF
+   and your CV PDF into the `CV\` folder when asked).
 4. **Connect Claude Desktop**: the wizard prints a JSON block at the end —
    paste it into Claude Desktop → Settings → Developer → Edit Config, then
    restart Claude Desktop.
@@ -71,6 +71,13 @@ node mcp-jobs.cjs daemon        # keep running, one cycle per hour
   Node version isn't 22 LTS. Install Node 22 from nodejs.org.
 - **Gmail/Calendar tools say "not configured"** — they're optional; run setup
   again and complete the Google step to enable them.
+- **Mail or calendar stopped working after a few days** (errors mentioning
+  `invalid_grant`, "token expired or revoked") — **double-click `auth.bat`**
+  (macOS/Linux: `./auth.sh`) and approve access again. This is normal: while
+  your Google OAuth app is in *Testing* status, Google expires its access after
+  about a week. To stop it recurring, open Google Cloud Console → *OAuth consent
+  screen* → **Publish app**. It stays your own private app; publishing only
+  removes the testing-mode expiry.
 - **search_jobs returns nothing** — check `APIFY_TOKEN` in `.env`, or your
   monthly Apify budget may be spent (`APIFY_BUDGET_USD`, default $4.50).
   Claude will fall back to web search automatically.
